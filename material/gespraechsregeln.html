@@ -2,40 +2,42 @@
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gesprächsregeln</title><meta name="robots" content="noindex, nofollow"><style>
 :root { --ink:#14141A; --muted:#5E5E68; --koralle:#E8553D; --tuerkis:#137F7A; --gelb:#E9A91A; --paper:#fff; }
-* { box-sizing:border-box; }
-body { margin:0; background:#EDEAE2; color:var(--ink); font-family:Verdana, Arial, Helvetica, sans-serif; line-height:1.5; }
+* { box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body { margin:0; background:#EDEAE2; color:var(--ink); font-family:Verdana, Arial, Helvetica, sans-serif; line-height:1.45; }
 .bar { position:sticky; top:0; z-index:5; background:var(--ink); color:#fff; padding:10px 18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
 .bar a, .bar button { font:inherit; font-weight:bold; font-size:15px; color:#fff; background:transparent; border:2px solid #fff; border-radius:10px; padding:9px 16px; min-height:44px; cursor:pointer; text-decoration:none; }
 .bar button { background:var(--koralle); border-color:var(--koralle); }
 .bar span { color:#cfcfd6; font-size:14px; }
-.sheet { width:210mm; min-height:297mm; margin:18px auto; background:var(--paper); padding:14mm 14mm 12mm; box-shadow:0 2px 14px rgba(0,0,0,.18); position:relative; overflow:hidden; }
-.sheet.quer { width:297mm; min-height:210mm; }
-.sheet::before { content:""; position:absolute; left:0; top:0; width:34mm; height:5mm; background:linear-gradient(90deg,var(--koralle),var(--gelb),var(--tuerkis)); }
-.kopf { display:flex; justify-content:space-between; align-items:flex-end; gap:10mm; border-bottom:2px solid var(--ink); padding-bottom:3mm; margin-bottom:6mm; }
-.kopf small { text-transform:uppercase; letter-spacing:.08em; font-weight:bold; font-size:9pt; color:var(--koralle); display:block; }
-h1 { font-family:"Arial Black","Helvetica Neue",Arial,sans-serif; font-weight:900; font-size:23pt; line-height:1.05; margin:1mm 0 0; letter-spacing:-.01em; }
-.name { font-size:10pt; white-space:nowrap; }
-.name span { display:inline-block; width:55mm; border-bottom:1.5px solid var(--ink); margin-left:2mm; }
-.auftrag { background:#FBE0DA; border:2px solid var(--ink); border-radius:4mm; padding:3.5mm 5mm; font-size:11pt; margin:0 0 6mm; }
+.sheet { width:210mm; height:297mm; margin:18px auto; background:var(--paper); padding:12mm 12mm 10mm; box-shadow:0 2px 14px rgba(0,0,0,.18); position:relative; overflow:hidden; }
+.sheet.quer { width:297mm; height:210mm; }
+.sheet::before { content:""; position:absolute; left:0; top:0; width:100%; height:3.5mm; background:linear-gradient(90deg,#E8553D,#E9A91A,#2BA9A3); }
+.kopf { display:flex; justify-content:space-between; align-items:center; gap:8mm; border-bottom:2px solid var(--ink); padding-bottom:2.5mm; margin:2mm 0 4mm; }
+.kopf small { text-transform:uppercase; letter-spacing:.08em; font-weight:bold; font-size:8.5pt; color:var(--koralle); display:block; }
+.kopf .ico { width:20mm; flex:none; }
+.kopf .ico svg { width:100%; height:auto; display:block; }
+h1 { font-family:"Arial Black","Helvetica Neue",Arial,sans-serif; font-weight:900; font-size:20pt; line-height:1.05; margin:1mm 0 0; letter-spacing:-.01em; }
+.name { font-size:9.5pt; white-space:nowrap; }
+.name span { display:inline-block; width:46mm; border-bottom:1.5px solid var(--ink); margin-left:2mm; }
+.auftrag { background:#FBE0DA; border:2px solid var(--ink); border-radius:3mm; padding:2.5mm 4mm; font-size:10pt; margin:0 0 4mm; }
 .auftrag b { color:#B53A25; }
-.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
-.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; }
-.karte { border:2px solid var(--ink); border-radius:4mm; padding:4mm 5mm; background:#fff; break-inside:avoid; page-break-inside:avoid; }
-.karte h3 { margin:0 0 2mm; font-family:"Arial Black",Arial,sans-serif; font-size:13pt; line-height:1.15; }
-.karte p { margin:0 0 2mm; font-size:10.5pt; }
-.schneide { border:2px dashed #8d8d96; }
-.linien { height:7mm; border-bottom:1.3px solid #9a9aa3; }
-.klein { font-size:9pt; color:var(--muted); }
+.karte { border:2px solid var(--ink); border-radius:3mm; padding:3mm 4mm; background:#fff; overflow:hidden; }
+.karte h3 { margin:0 0 1.5mm; font-family:"Arial Black",Arial,sans-serif; font-size:11.5pt; line-height:1.15; }
+.karte p { margin:0 0 1.5mm; font-size:9.5pt; }
+.schneide { border:2px dashed #7d7d86; }
+.linien { height:6.5mm; border-bottom:1.2px solid #9a9aa3; }
+.klein { font-size:8.5pt; color:var(--muted); }
+.avatar { width:100%; height:auto; display:block; }
 @media print {
   body { background:#fff; }
   .bar { display:none; }
-  .sheet { margin:0; box-shadow:none; width:auto; min-height:0; height:273mm; padding:0; }
-  .sheet.quer { height:176mm; min-height:0; width:auto; }
-  .sheet + .sheet { page-break-before:always; break-before:page; }
+  .sheet { margin:0; box-shadow:none; width:auto; height:273mm; padding:0; page-break-after:always; break-after:page; }
+  .sheet.quer { width:auto; height:186mm; }
+  .sheet:last-child { page-break-after:auto; break-after:auto; }
+  .sheet::before { position:relative; margin-bottom:3mm; }
   @page { size:A4 portrait; margin:12mm; }
 }
 </style></head>
 <body>
 <div class="bar"><a href="../index.html">Zurück zur Stunde</a><button onclick="window.print()">Als PDF speichern / drucken</button><span>Gesprächsregeln</span></div>
-<div class="sheet"><div class="kopf"><div><small>Ethik 8 · Partnerschaft</small><h1>Unsere Gesprächsregeln</h1></div></div><div class="auftrag"><b>Aushang:</b> Dieses Blatt hängt während der ganzen Stunde im Raum. Jede Regel gilt auch, wenn es mal lustig oder peinlich wird.</div><div class="karte" style="margin-bottom:5mm;display:flex;gap:6mm;align-items:center;"><div style="font-family:Arial Black,Arial;font-size:30pt;color:var(--koralle);width:14mm;">1</div><div><h3 style="font-size:17pt;">Freiwillig</h3><p style="font-size:13pt;margin:0;">Niemand muss etwas Persönliches erzählen. Wer nicht möchte, sagt „Pass“.</p></div></div><div class="karte" style="margin-bottom:5mm;display:flex;gap:6mm;align-items:center;"><div style="font-family:Arial Black,Arial;font-size:30pt;color:var(--koralle);width:14mm;">2</div><div><h3 style="font-size:17pt;">Nichts weitertragen</h3><p style="font-size:13pt;margin:0;">Was hier gesagt wird, bleibt hier. Keine Namen von Leuten, die nicht da sind.</p></div></div><div class="karte" style="margin-bottom:5mm;display:flex;gap:6mm;align-items:center;"><div style="font-family:Arial Black,Arial;font-size:30pt;color:var(--koralle);width:14mm;">3</div><div><h3 style="font-size:17pt;">Ausreden lassen</h3><p style="font-size:13pt;margin:0;">Zuhören, bevor man antwortet. Kein Auslachen, kein Augenrollen.</p></div></div><div class="karte" style="margin-bottom:5mm;display:flex;gap:6mm;align-items:center;"><div style="font-family:Arial Black,Arial;font-size:30pt;color:var(--koralle);width:14mm;">4</div><div><h3 style="font-size:17pt;">Über Fälle reden, nicht über Leute</h3><p style="font-size:13pt;margin:0;">Wir sprechen über erfundene Beispiele und über „man“. Niemand wird bloßgestellt.</p></div></div><div class="karte" style="margin-bottom:5mm;display:flex;gap:6mm;align-items:center;"><div style="font-family:Arial Black,Arial;font-size:30pt;color:var(--koralle);width:14mm;">5</div><div><h3 style="font-size:17pt;">Jede Meinung darf da sein</h3><p style="font-size:13pt;margin:0;">Wir müssen uns nicht einig werden. Wir müssen nur verstehen, warum jemand so denkt.</p></div></div></div>
+<div class="sheet"><div class="kopf"><div style="flex:1"><small>Ethik 8 · Partnerschaft</small><h1>Unsere Gesprächsregeln</h1></div><div class="ico"><svg class="art-svg" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Haus aus bunten Holzbausteinen"><ellipse cx="200" cy="304" rx="170" ry="8" fill="#14141A" opacity=".12"/><rect x="10" y="262" width="46" height="38" rx="8" fill="#E9A91A" stroke="#14141A" stroke-width="3"/><rect x="346" y="272" width="42" height="28" rx="8" fill="#2BA9A3" stroke="#14141A" stroke-width="3"/><rect x="24" y="232" width="30" height="30" rx="6" fill="#E8553D" stroke="#14141A" stroke-width="3"/><rect x="70" y="220" width="120" height="80" rx="8" fill="#2BA9A3" stroke="#14141A" stroke-width="3"/><rect x="190" y="220" width="60" height="80" rx="8" fill="#EBD9B8" stroke="#14141A" stroke-width="3"/><rect x="250" y="220" width="80" height="80" rx="8" fill="#E8553D" stroke="#14141A" stroke-width="3"/><rect x="70" y="140" width="80" height="80" rx="8" fill="#E9A91A" stroke="#14141A" stroke-width="3"/><rect x="150" y="140" width="90" height="80" rx="8" fill="#137F7A" stroke="#14141A" stroke-width="3"/><rect x="240" y="140" width="90" height="80" rx="8" fill="#EBD9B8" stroke="#14141A" stroke-width="3"/><rect x="268" y="56" width="28" height="60" rx="5" fill="#EBD9B8" stroke="#14141A" stroke-width="3"/><polygon points="56,140 200,44 200,140" fill="#E8553D" stroke="#14141A" stroke-width="3" stroke-linejoin="round"/><polygon points="200,44 344,140 200,140" fill="#E9A91A" stroke="#14141A" stroke-width="3" stroke-linejoin="round"/><path d="M200 250 c-16 -12 -26 -22 -26 -34 a14 14 0 0 1 26 -8 a14 14 0 0 1 26 8 c0 12 -10 22 -26 34z" fill="#fff" stroke="#14141A" stroke-width="3" transform="translate(0,-8) scale(1)" opacity="0"/><path d="M290 266 c-12 -9 -19 -16 -19 -25 a10 10 0 0 1 19 -6 a10 10 0 0 1 19 6 c0 9 -7 16 -19 25z" fill="#fff" stroke="#14141A" stroke-width="3"/></svg></div></div><div class="karte" style="margin-bottom:5mm;display:flex;gap:7mm;align-items:center;border-left:9mm solid #E8553D;"><div style="font-family:Arial Black,Arial;font-size:34pt;color:#E8553D;width:14mm;">1</div><div><h3 style="font-size:18pt;">Freiwillig</h3><p style="font-size:13pt;margin:0;">Niemand muss etwas Persönliches erzählen. Wer nicht möchte, sagt „Pass“.</p></div></div><div class="karte" style="margin-bottom:5mm;display:flex;gap:7mm;align-items:center;border-left:9mm solid #E9A91A;"><div style="font-family:Arial Black,Arial;font-size:34pt;color:#E9A91A;width:14mm;">2</div><div><h3 style="font-size:18pt;">Nichts weitertragen</h3><p style="font-size:13pt;margin:0;">Was hier gesagt wird, bleibt hier. Keine Namen von Leuten, die nicht da sind.</p></div></div><div class="karte" style="margin-bottom:5mm;display:flex;gap:7mm;align-items:center;border-left:9mm solid #2BA9A3;"><div style="font-family:Arial Black,Arial;font-size:34pt;color:#2BA9A3;width:14mm;">3</div><div><h3 style="font-size:18pt;">Ausreden lassen</h3><p style="font-size:13pt;margin:0;">Zuhören, bevor man antwortet. Kein Auslachen, kein Augenrollen.</p></div></div><div class="karte" style="margin-bottom:5mm;display:flex;gap:7mm;align-items:center;border-left:9mm solid #137F7A;"><div style="font-family:Arial Black,Arial;font-size:34pt;color:#137F7A;width:14mm;">4</div><div><h3 style="font-size:18pt;">Über Fälle reden</h3><p style="font-size:13pt;margin:0;">Wir sprechen über erfundene Beispiele und über „man“. Niemand wird bloßgestellt.</p></div></div><div class="karte" style="margin-bottom:5mm;display:flex;gap:7mm;align-items:center;border-left:9mm solid #E8553D;"><div style="font-family:Arial Black,Arial;font-size:34pt;color:#E8553D;width:14mm;">5</div><div><h3 style="font-size:18pt;">Jede Meinung darf da sein</h3><p style="font-size:13pt;margin:0;">Wir müssen uns nicht einig werden. Wir müssen nur verstehen, warum jemand so denkt.</p></div></div><p class="klein" style="text-align:center;margin-top:6mm;">Dieses Blatt hängt während der ganzen Stunde im Raum.</p></div>
 </body></html>

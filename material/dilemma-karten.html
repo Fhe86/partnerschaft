@@ -2,68 +2,85 @@
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dilemma-Karten</title><meta name="robots" content="noindex, nofollow"><style>
 :root { --ink:#14141A; --muted:#5E5E68; --koralle:#E8553D; --tuerkis:#137F7A; --gelb:#E9A91A; --paper:#fff; }
-* { box-sizing:border-box; }
-body { margin:0; background:#EDEAE2; color:var(--ink); font-family:Verdana, Arial, Helvetica, sans-serif; line-height:1.5; }
+* { box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body { margin:0; background:#EDEAE2; color:var(--ink); font-family:Verdana, Arial, Helvetica, sans-serif; line-height:1.45; }
 .bar { position:sticky; top:0; z-index:5; background:var(--ink); color:#fff; padding:10px 18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
 .bar a, .bar button { font:inherit; font-weight:bold; font-size:15px; color:#fff; background:transparent; border:2px solid #fff; border-radius:10px; padding:9px 16px; min-height:44px; cursor:pointer; text-decoration:none; }
 .bar button { background:var(--koralle); border-color:var(--koralle); }
 .bar span { color:#cfcfd6; font-size:14px; }
-.sheet { width:210mm; min-height:297mm; margin:18px auto; background:var(--paper); padding:14mm 14mm 12mm; box-shadow:0 2px 14px rgba(0,0,0,.18); position:relative; overflow:hidden; }
-.sheet.quer { width:297mm; min-height:210mm; }
-.sheet::before { content:""; position:absolute; left:0; top:0; width:34mm; height:5mm; background:linear-gradient(90deg,var(--koralle),var(--gelb),var(--tuerkis)); }
-.kopf { display:flex; justify-content:space-between; align-items:flex-end; gap:10mm; border-bottom:2px solid var(--ink); padding-bottom:3mm; margin-bottom:6mm; }
-.kopf small { text-transform:uppercase; letter-spacing:.08em; font-weight:bold; font-size:9pt; color:var(--koralle); display:block; }
-h1 { font-family:"Arial Black","Helvetica Neue",Arial,sans-serif; font-weight:900; font-size:23pt; line-height:1.05; margin:1mm 0 0; letter-spacing:-.01em; }
-.name { font-size:10pt; white-space:nowrap; }
-.name span { display:inline-block; width:55mm; border-bottom:1.5px solid var(--ink); margin-left:2mm; }
-.auftrag { background:#FBE0DA; border:2px solid var(--ink); border-radius:4mm; padding:3.5mm 5mm; font-size:11pt; margin:0 0 6mm; }
+.sheet { width:210mm; height:297mm; margin:18px auto; background:var(--paper); padding:12mm 12mm 10mm; box-shadow:0 2px 14px rgba(0,0,0,.18); position:relative; overflow:hidden; }
+.sheet.quer { width:297mm; height:210mm; }
+.sheet::before { content:""; position:absolute; left:0; top:0; width:100%; height:3.5mm; background:linear-gradient(90deg,#E8553D,#E9A91A,#2BA9A3); }
+.kopf { display:flex; justify-content:space-between; align-items:center; gap:8mm; border-bottom:2px solid var(--ink); padding-bottom:2.5mm; margin:2mm 0 4mm; }
+.kopf small { text-transform:uppercase; letter-spacing:.08em; font-weight:bold; font-size:8.5pt; color:var(--koralle); display:block; }
+.kopf .ico { width:20mm; flex:none; }
+.kopf .ico svg { width:100%; height:auto; display:block; }
+h1 { font-family:"Arial Black","Helvetica Neue",Arial,sans-serif; font-weight:900; font-size:20pt; line-height:1.05; margin:1mm 0 0; letter-spacing:-.01em; }
+.name { font-size:9.5pt; white-space:nowrap; }
+.name span { display:inline-block; width:46mm; border-bottom:1.5px solid var(--ink); margin-left:2mm; }
+.auftrag { background:#FBE0DA; border:2px solid var(--ink); border-radius:3mm; padding:2.5mm 4mm; font-size:10pt; margin:0 0 4mm; }
 .auftrag b { color:#B53A25; }
-.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
-.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; }
-.karte { border:2px solid var(--ink); border-radius:4mm; padding:4mm 5mm; background:#fff; break-inside:avoid; page-break-inside:avoid; }
-.karte h3 { margin:0 0 2mm; font-family:"Arial Black",Arial,sans-serif; font-size:13pt; line-height:1.15; }
-.karte p { margin:0 0 2mm; font-size:10.5pt; }
-.schneide { border:2px dashed #8d8d96; }
-.linien { height:7mm; border-bottom:1.3px solid #9a9aa3; }
-.klein { font-size:9pt; color:var(--muted); }
+.karte { border:2px solid var(--ink); border-radius:3mm; padding:3mm 4mm; background:#fff; overflow:hidden; }
+.karte h3 { margin:0 0 1.5mm; font-family:"Arial Black",Arial,sans-serif; font-size:11.5pt; line-height:1.15; }
+.karte p { margin:0 0 1.5mm; font-size:9.5pt; }
+.schneide { border:2px dashed #7d7d86; }
+.linien { height:6.5mm; border-bottom:1.2px solid #9a9aa3; }
+.klein { font-size:8.5pt; color:var(--muted); }
+.avatar { width:100%; height:auto; display:block; }
 @media print {
   body { background:#fff; }
   .bar { display:none; }
-  .sheet { margin:0; box-shadow:none; width:auto; min-height:0; height:273mm; padding:0; }
-  .sheet.quer { height:176mm; min-height:0; width:auto; }
-  .sheet + .sheet { page-break-before:always; break-before:page; }
+  .sheet { margin:0; box-shadow:none; width:auto; height:273mm; padding:0; page-break-after:always; break-after:page; }
+  .sheet.quer { width:auto; height:186mm; }
+  .sheet:last-child { page-break-after:auto; break-after:auto; }
+  .sheet::before { position:relative; margin-bottom:3mm; }
   @page { size:A4 portrait; margin:12mm; }
 }
 </style></head>
 <body>
 <div class="bar"><a href="../index.html">Zurück zur Stunde</a><button onclick="window.print()">Als PDF speichern / drucken</button><span>Dilemma-Karten</span></div>
-<div class="sheet"><div class="kopf"><div><small>Fall 1 von 4 · Dilemma</small><h1>Das Passwort</h1></div><div class="name">Name:<span></span></div></div>
-<div class="karte" style="font-size:13pt;padding:6mm;margin-bottom:6mm;"><p style="font-size:13pt;">Jonas und Mia sind seit drei Monaten zusammen. Mia sagt: „Lass uns Handy-Passwörter tauschen. Das ist der Beweis, dass wir uns vertrauen.“ Jonas hat nichts zu verbergen, aber ihm ist das trotzdem unangenehm.</p></div>
-<div class="grid2" style="margin-bottom:6mm;">
-<div class="karte" style="background:#FBE0DA;"><h3>Möglichkeit A</h3><p>Jonas tauscht die Passwörter, damit kein Streit entsteht.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
-<div class="karte" style="background:#D5EFEC;"><h3>Möglichkeit B</h3><p>Jonas sagt Nein und erklärt, warum.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
-</div>
-<div class="auftrag"><b>Entscheidungsfrage:</b> Ist Offenheit ein Beweis für Vertrauen, oder zerstört Kontrolle es?<br><br><b>Aufgabe:</b> Entscheidet euch als Gruppe für A oder B. „Kommt drauf an“ gilt nicht. Schreibt auf, welche Eigenschaft in diesem Fall am meisten gefehlt hat.</div>
-<p class="klein">Unsere Eigenschaft, die gefehlt hat: ___________________________</p></div><div class="sheet"><div class="kopf"><div><small>Fall 2 von 4 · Dilemma</small><h1>Online, aber stumm</h1></div><div class="name">Name:<span></span></div></div>
-<div class="karte" style="font-size:13pt;padding:6mm;margin-bottom:6mm;"><p style="font-size:13pt;">Lena schreibt seit zwei Wochen jeden Tag mit Tom. Auf einmal kommt keine Antwort mehr. Seine Nachricht „zuletzt online vor 5 Minuten“ steht da. Lena starrt auf ihr Handy.</p></div>
-<div class="grid2" style="margin-bottom:6mm;">
-<div class="karte" style="background:#FBE0DA;"><h3>Möglichkeit A</h3><p>Lena schreibt: „Ich merke, du antwortest nicht. Ist alles okay?“</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
-<div class="karte" style="background:#D5EFEC;"><h3>Möglichkeit B</h3><p>Lena schweigt auch und wartet ab, ob er sich meldet.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
-</div>
-<div class="auftrag"><b>Entscheidungsfrage:</b> Wer ist hier eigentlich fair, und was hätte Tom tun können?<br><br><b>Aufgabe:</b> Entscheidet euch als Gruppe für A oder B. „Kommt drauf an“ gilt nicht. Schreibt auf, welche Eigenschaft in diesem Fall am meisten gefehlt hat.</div>
-<p class="klein">Unsere Eigenschaft, die gefehlt hat: ___________________________</p></div><div class="sheet"><div class="kopf"><div><small>Fall 3 von 4 · Dilemma</small><h1>Samstag war immer unser Tag</h1></div><div class="name">Name:<span></span></div></div>
-<div class="karte" style="font-size:13pt;padding:6mm;margin-bottom:6mm;"><p style="font-size:13pt;">Nina trifft sich seit Jahren jeden Samstag mit ihrer besten Freundin Hanna. Seit Nina einen Freund hat, sagt sie meistens ab. Hanna sagt nichts, aber sie ist verletzt. Nina merkt es.</p></div>
-<div class="grid2" style="margin-bottom:6mm;">
-<div class="karte" style="background:#FBE0DA;"><h3>Möglichkeit A</h3><p>Nina bleibt bei ihrem Freund, die Freundschaft muss das aushalten.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
-<div class="karte" style="background:#D5EFEC;"><h3>Möglichkeit B</h3><p>Nina nimmt den Samstag wieder fest für Hanna und sagt es ihrem Freund.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
-</div>
-<div class="auftrag"><b>Entscheidungsfrage:</b> Wie viel Zeit darf eine Beziehung kosten, und was schuldet man Freunden?<br><br><b>Aufgabe:</b> Entscheidet euch als Gruppe für A oder B. „Kommt drauf an“ gilt nicht. Schreibt auf, welche Eigenschaft in diesem Fall am meisten gefehlt hat.</div>
-<p class="klein">Unsere Eigenschaft, die gefehlt hat: ___________________________</p></div><div class="sheet"><div class="kopf"><div><small>Fall 4 von 4 · Dilemma</small><h1>„Ich hab nur Angst, dich zu verlieren“</h1></div><div class="name">Name:<span></span></div></div>
-<div class="karte" style="font-size:13pt;padding:6mm;margin-bottom:6mm;"><p style="font-size:13pt;">Emre schreibt viel mit einer Klassenkameradin, die einfach eine gute Freundin ist. Seine Freundin Chiara findet das schlimm. Sie sagt: „Ich hab nur Angst, dich zu verlieren.“ Sie will, dass er den Chat beendet.</p></div>
-<div class="grid2" style="margin-bottom:6mm;">
-<div class="karte" style="background:#FBE0DA;"><h3>Möglichkeit A</h3><p>Emre beendet den Chat, damit Chiara sich sicher fühlt.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
-<div class="karte" style="background:#D5EFEC;"><h3>Möglichkeit B</h3><p>Emre schreibt weiter, redet aber offen mit Chiara über ihre Angst.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
-</div>
-<div class="auftrag"><b>Entscheidungsfrage:</b> Ist das noch Liebe, normale Unsicherheit oder schon zu viel Kontrolle?<br><br><b>Aufgabe:</b> Entscheidet euch als Gruppe für A oder B. „Kommt drauf an“ gilt nicht. Schreibt auf, welche Eigenschaft in diesem Fall am meisten gefehlt hat.</div>
-<p class="klein">Unsere Eigenschaft, die gefehlt hat: ___________________________</p></div>
+
+<div class="sheet"><div class="kopf"><div style="flex:1"><small>Erarbeitung · Dilemma-Fälle</small><h1>Vier Fälle, eine Entscheidung</h1></div><div class="ico"><svg class="art-svg" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Handy mit unbeantworteten Nachrichten"><rect x="95" y="8" width="110" height="224" rx="18" fill="#fff" stroke="#14141A" stroke-width="4"/><rect x="108" y="30" width="84" height="170" rx="8" fill="#FBF8F1"/><rect x="112" y="46" width="62" height="28" rx="12" fill="#FBE0DA" stroke="#14141A" stroke-width="3"/><rect x="126" y="84" width="62" height="28" rx="12" fill="#D5EFEC" stroke="#14141A" stroke-width="3"/><rect x="112" y="122" width="62" height="28" rx="12" fill="#FBE0DA" stroke="#14141A" stroke-width="3"/><circle cx="132" cy="168" r="4" fill="#14141A" opacity=".5"/><circle cx="146" cy="168" r="4" fill="#14141A" opacity=".5"/><circle cx="160" cy="168" r="4" fill="#14141A" opacity=".5"/><rect x="116" y="182" width="68" height="6" rx="3" fill="#14141A" opacity=".25"/><circle cx="150" cy="214" r="6" fill="none" stroke="#14141A" stroke-width="3"/><circle cx="236" cy="52" r="16" fill="#2E9E5B" stroke="#14141A" stroke-width="3"/></svg></div></div>
+<p class="klein" style="margin:0 0 3mm;"><b>Ausschneiden:</b> Jede Gruppe bekommt einen Fall. Entscheidet euch für A oder B. „Kommt drauf an“ gilt nicht. Zwei Seiten kopieren reichen für sechs Gruppen.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:4mm;height:226mm;"><div class="karte schneide" style="padding:0;display:flex;flex-direction:column;">
+<div style="display:flex;gap:3mm;align-items:center;background:#E8553D;border-bottom:2px solid #14141A;padding:2mm 3mm;">
+<div style="width:20mm;flex:none;background:#fff;border:2px solid #14141A;border-radius:2mm;padding:1mm;"><svg class="art-svg" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Handy mit Schloss"><rect x="95" y="8" width="110" height="224" rx="18" fill="#fff" stroke="#14141A" stroke-width="4"/><rect x="108" y="30" width="84" height="170" rx="8" fill="#D5EFEC"/><rect x="126" y="108" width="48" height="42" rx="6" fill="#E9A91A" stroke="#14141A" stroke-width="4"/><path d="M134 108 v-14 a16 16 0 0 1 32 0 v14" fill="none" stroke="#14141A" stroke-width="5"/><circle cx="150" cy="126" r="5" fill="#14141A"/><rect x="148" y="128" width="4" height="12" fill="#14141A"/><circle cx="150" cy="214" r="6" fill="none" stroke="#14141A" stroke-width="3"/></svg></div>
+<div><small style="font-size:7.5pt;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;">Fall 1</small><h3 style="font-size:11.5pt;margin:0;">Das Passwort</h3></div></div>
+<div style="padding:2.5mm 3.5mm;display:flex;flex-direction:column;flex:1;">
+<p style="font-size:9.3pt;line-height:1.35;">Jonas und Mia sind seit drei Monaten zusammen. Mia sagt: „Lass uns Handy-Passwörter tauschen. Das ist der Beweis, dass wir uns vertrauen.“ Jonas hat nichts zu verbergen, aber ihm ist das trotzdem unangenehm.</p>
+<p style="font-size:9pt;"><b style="color:#B53A25;">A</b> Jonas tauscht die Passwörter, damit kein Streit entsteht.</p>
+<p style="font-size:9pt;"><b style="color:#137F7A;">B</b> Jonas sagt Nein und erklärt, warum.</p>
+<p style="font-size:9pt;font-weight:bold;margin-top:1mm;">Ist Offenheit ein Beweis für Vertrauen, oder zerstört Kontrolle es?</p>
+<div style="margin-top:auto;"><p class="klein" style="margin:0;">Wir entscheiden uns für A / B, weil:</p><div class="linien" style="height:6mm"></div><div class="linien" style="height:6mm"></div>
+<p class="klein" style="margin:1mm 0 0;">Gefehlt hat: ______________________________</p></div></div></div><div class="karte schneide" style="padding:0;display:flex;flex-direction:column;">
+<div style="display:flex;gap:3mm;align-items:center;background:#E9A91A;border-bottom:2px solid #14141A;padding:2mm 3mm;">
+<div style="width:20mm;flex:none;background:#fff;border:2px solid #14141A;border-radius:2mm;padding:1mm;"><svg class="art-svg" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Handy mit unbeantworteten Nachrichten"><rect x="95" y="8" width="110" height="224" rx="18" fill="#fff" stroke="#14141A" stroke-width="4"/><rect x="108" y="30" width="84" height="170" rx="8" fill="#FBF8F1"/><rect x="112" y="46" width="62" height="28" rx="12" fill="#FBE0DA" stroke="#14141A" stroke-width="3"/><rect x="126" y="84" width="62" height="28" rx="12" fill="#D5EFEC" stroke="#14141A" stroke-width="3"/><rect x="112" y="122" width="62" height="28" rx="12" fill="#FBE0DA" stroke="#14141A" stroke-width="3"/><circle cx="132" cy="168" r="4" fill="#14141A" opacity=".5"/><circle cx="146" cy="168" r="4" fill="#14141A" opacity=".5"/><circle cx="160" cy="168" r="4" fill="#14141A" opacity=".5"/><rect x="116" y="182" width="68" height="6" rx="3" fill="#14141A" opacity=".25"/><circle cx="150" cy="214" r="6" fill="none" stroke="#14141A" stroke-width="3"/><circle cx="236" cy="52" r="16" fill="#2E9E5B" stroke="#14141A" stroke-width="3"/></svg></div>
+<div><small style="font-size:7.5pt;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;">Fall 2</small><h3 style="font-size:11.5pt;margin:0;">Online, aber stumm</h3></div></div>
+<div style="padding:2.5mm 3.5mm;display:flex;flex-direction:column;flex:1;">
+<p style="font-size:9.3pt;line-height:1.35;">Lena schreibt seit zwei Wochen jeden Tag mit Tom. Auf einmal kommt keine Antwort mehr. Bei ihm steht „zuletzt online vor 5 Minuten“. Lena starrt auf ihr Handy.</p>
+<p style="font-size:9pt;"><b style="color:#B53A25;">A</b> Lena schreibt: „Ich merke, du antwortest nicht. Ist alles okay?“</p>
+<p style="font-size:9pt;"><b style="color:#137F7A;">B</b> Lena schweigt auch und wartet ab, ob er sich meldet.</p>
+<p style="font-size:9pt;font-weight:bold;margin-top:1mm;">Wer ist hier eigentlich fair, und was hätte Tom tun können?</p>
+<div style="margin-top:auto;"><p class="klein" style="margin:0;">Wir entscheiden uns für A / B, weil:</p><div class="linien" style="height:6mm"></div><div class="linien" style="height:6mm"></div>
+<p class="klein" style="margin:1mm 0 0;">Gefehlt hat: ______________________________</p></div></div></div><div class="karte schneide" style="padding:0;display:flex;flex-direction:column;">
+<div style="display:flex;gap:3mm;align-items:center;background:#2BA9A3;border-bottom:2px solid #14141A;padding:2mm 3mm;">
+<div style="width:20mm;flex:none;background:#fff;border:2px solid #14141A;border-radius:2mm;padding:1mm;"><svg class="art-svg" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zwei Freundinnen und ein Kalender"><circle cx="88" cy="96" r="26" fill="#EBD9B8" stroke="#14141A" stroke-width="4"/><path d="M44 200 a44 44 0 0 1 88 0z" fill="#E8553D" stroke="#14141A" stroke-width="4" stroke-linejoin="round"/><circle cx="212" cy="96" r="26" fill="#EBD9B8" stroke="#14141A" stroke-width="4"/><path d="M168 200 a44 44 0 0 1 88 0z" fill="#2BA9A3" stroke="#14141A" stroke-width="4" stroke-linejoin="round"/><rect x="120" y="20" width="60" height="56" rx="8" fill="#E9A91A" stroke="#14141A" stroke-width="4"/><rect x="120" y="20" width="60" height="16" rx="8" fill="#14141A"/><text x="150" y="64" text-anchor="middle" font-family="Arial Black,Arial" font-size="22" fill="#14141A">SA</text><line x1="20" y1="204" x2="280" y2="204" stroke="#14141A" stroke-width="4" stroke-linecap="round"/></svg></div>
+<div><small style="font-size:7.5pt;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;">Fall 3</small><h3 style="font-size:11.5pt;margin:0;">Samstag war immer unser Tag</h3></div></div>
+<div style="padding:2.5mm 3.5mm;display:flex;flex-direction:column;flex:1;">
+<p style="font-size:9.3pt;line-height:1.35;">Nina trifft sich seit Jahren jeden Samstag mit ihrer besten Freundin Hanna. Seit Nina einen Freund hat, sagt sie meistens ab. Hanna sagt nichts, aber sie ist verletzt. Nina merkt es.</p>
+<p style="font-size:9pt;"><b style="color:#B53A25;">A</b> Nina bleibt bei ihrem Freund, die Freundschaft muss das aushalten.</p>
+<p style="font-size:9pt;"><b style="color:#137F7A;">B</b> Nina nimmt den Samstag wieder fest für Hanna und sagt es ihrem Freund.</p>
+<p style="font-size:9pt;font-weight:bold;margin-top:1mm;">Wie viel Zeit darf eine Beziehung kosten, und was schuldet man Freunden?</p>
+<div style="margin-top:auto;"><p class="klein" style="margin:0;">Wir entscheiden uns für A / B, weil:</p><div class="linien" style="height:6mm"></div><div class="linien" style="height:6mm"></div>
+<p class="klein" style="margin:1mm 0 0;">Gefehlt hat: ______________________________</p></div></div></div><div class="karte schneide" style="padding:0;display:flex;flex-direction:column;">
+<div style="display:flex;gap:3mm;align-items:center;background:#137F7A;border-bottom:2px solid #14141A;padding:2mm 3mm;">
+<div style="width:20mm;flex:none;background:#fff;border:2px solid #14141A;border-radius:2mm;padding:1mm;"><svg class="art-svg" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Handy mit Herz"><rect x="95" y="8" width="110" height="224" rx="18" fill="#fff" stroke="#14141A" stroke-width="4"/><rect x="108" y="30" width="84" height="170" rx="8" fill="#FBE0DA"/><rect x="114" y="48" width="64" height="28" rx="12" fill="#fff" stroke="#14141A" stroke-width="3"/><rect x="122" y="86" width="64" height="28" rx="12" fill="#D5EFEC" stroke="#14141A" stroke-width="3"/><path d="M150 188 c-18 -13 -28 -23 -28 -35 a15 15 0 0 1 28 -9 a15 15 0 0 1 28 9 c0 12 -10 22 -28 35z" fill="#E8553D" stroke="#14141A" stroke-width="3.5"/><circle cx="150" cy="214" r="6" fill="none" stroke="#14141A" stroke-width="3"/></svg></div>
+<div><small style="font-size:7.5pt;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;">Fall 4</small><h3 style="font-size:11.5pt;margin:0;">„Ich hab nur Angst, dich zu verlieren“</h3></div></div>
+<div style="padding:2.5mm 3.5mm;display:flex;flex-direction:column;flex:1;">
+<p style="font-size:9.3pt;line-height:1.35;">Emre schreibt viel mit einer Klassenkameradin, die einfach eine gute Freundin ist. Seine Freundin Chiara findet das schlimm. Sie sagt: „Ich hab nur Angst, dich zu verlieren.“ Sie will, dass er den Chat beendet.</p>
+<p style="font-size:9pt;"><b style="color:#B53A25;">A</b> Emre beendet den Chat, damit Chiara sich sicher fühlt.</p>
+<p style="font-size:9pt;"><b style="color:#137F7A;">B</b> Emre schreibt weiter, redet aber offen mit Chiara über ihre Angst.</p>
+<p style="font-size:9pt;font-weight:bold;margin-top:1mm;">Ist das noch Liebe, normale Unsicherheit oder schon zu viel Kontrolle?</p>
+<div style="margin-top:auto;"><p class="klein" style="margin:0;">Wir entscheiden uns für A / B, weil:</p><div class="linien" style="height:6mm"></div><div class="linien" style="height:6mm"></div>
+<p class="klein" style="margin:1mm 0 0;">Gefehlt hat: ______________________________</p></div></div></div></div></div>
 </body></html>
