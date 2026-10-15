@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dilemma-Karten</title><meta name="robots" content="noindex, nofollow"><style>
+:root { --ink:#14141A; --muted:#5E5E68; --koralle:#E8553D; --tuerkis:#137F7A; --gelb:#E9A91A; --paper:#fff; }
+* { box-sizing:border-box; }
+body { margin:0; background:#EDEAE2; color:var(--ink); font-family:Verdana, Arial, Helvetica, sans-serif; line-height:1.5; }
+.bar { position:sticky; top:0; z-index:5; background:var(--ink); color:#fff; padding:10px 18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.bar a, .bar button { font:inherit; font-weight:bold; font-size:15px; color:#fff; background:transparent; border:2px solid #fff; border-radius:10px; padding:9px 16px; min-height:44px; cursor:pointer; text-decoration:none; }
+.bar button { background:var(--koralle); border-color:var(--koralle); }
+.bar span { color:#cfcfd6; font-size:14px; }
+.sheet { width:210mm; min-height:297mm; margin:18px auto; background:var(--paper); padding:14mm 14mm 12mm; box-shadow:0 2px 14px rgba(0,0,0,.18); position:relative; overflow:hidden; }
+.sheet.quer { width:297mm; min-height:210mm; }
+.sheet::before { content:""; position:absolute; left:0; top:0; width:34mm; height:5mm; background:linear-gradient(90deg,var(--koralle),var(--gelb),var(--tuerkis)); }
+.kopf { display:flex; justify-content:space-between; align-items:flex-end; gap:10mm; border-bottom:2px solid var(--ink); padding-bottom:3mm; margin-bottom:6mm; }
+.kopf small { text-transform:uppercase; letter-spacing:.08em; font-weight:bold; font-size:9pt; color:var(--koralle); display:block; }
+h1 { font-family:"Arial Black","Helvetica Neue",Arial,sans-serif; font-weight:900; font-size:23pt; line-height:1.05; margin:1mm 0 0; letter-spacing:-.01em; }
+.name { font-size:10pt; white-space:nowrap; }
+.name span { display:inline-block; width:55mm; border-bottom:1.5px solid var(--ink); margin-left:2mm; }
+.auftrag { background:#FBE0DA; border:2px solid var(--ink); border-radius:4mm; padding:3.5mm 5mm; font-size:11pt; margin:0 0 6mm; }
+.auftrag b { color:#B53A25; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
+.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; }
+.karte { border:2px solid var(--ink); border-radius:4mm; padding:4mm 5mm; background:#fff; break-inside:avoid; page-break-inside:avoid; }
+.karte h3 { margin:0 0 2mm; font-family:"Arial Black",Arial,sans-serif; font-size:13pt; line-height:1.15; }
+.karte p { margin:0 0 2mm; font-size:10.5pt; }
+.schneide { border:2px dashed #8d8d96; }
+.linien { height:7mm; border-bottom:1.3px solid #9a9aa3; }
+.klein { font-size:9pt; color:var(--muted); }
+@media print {
+  body { background:#fff; }
+  .bar { display:none; }
+  .sheet { margin:0; box-shadow:none; width:auto; min-height:0; height:273mm; padding:0; }
+  .sheet.quer { height:176mm; min-height:0; width:auto; }
+  .sheet + .sheet { page-break-before:always; break-before:page; }
+  @page { size:A4 portrait; margin:12mm; }
+}
+</style></head>
+<body>
+<div class="bar"><a href="../index.html">Zurück zur Stunde</a><button onclick="window.print()">Als PDF speichern / drucken</button><span>Dilemma-Karten</span></div>
+<div class="sheet"><div class="kopf"><div><small>Fall 1 von 4 · Dilemma</small><h1>Das Passwort</h1></div><div class="name">Name:<span></span></div></div>
+<div class="karte" style="font-size:13pt;padding:6mm;margin-bottom:6mm;"><p style="font-size:13pt;">Jonas und Mia sind seit drei Monaten zusammen. Mia sagt: „Lass uns Handy-Passwörter tauschen. Das ist der Beweis, dass wir uns vertrauen.“ Jonas hat nichts zu verbergen, aber ihm ist das trotzdem unangenehm.</p></div>
+<div class="grid2" style="margin-bottom:6mm;">
+<div class="karte" style="background:#FBE0DA;"><h3>Möglichkeit A</h3><p>Jonas tauscht die Passwörter, damit kein Streit entsteht.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
+<div class="karte" style="background:#D5EFEC;"><h3>Möglichkeit B</h3><p>Jonas sagt Nein und erklärt, warum.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
+</div>
+<div class="auftrag"><b>Entscheidungsfrage:</b> Ist Offenheit ein Beweis für Vertrauen, oder zerstört Kontrolle es?<br><br><b>Aufgabe:</b> Entscheidet euch als Gruppe für A oder B. „Kommt drauf an“ gilt nicht. Schreibt auf, welche Eigenschaft in diesem Fall am meisten gefehlt hat.</div>
+<p class="klein">Unsere Eigenschaft, die gefehlt hat: ___________________________</p></div><div class="sheet"><div class="kopf"><div><small>Fall 2 von 4 · Dilemma</small><h1>Online, aber stumm</h1></div><div class="name">Name:<span></span></div></div>
+<div class="karte" style="font-size:13pt;padding:6mm;margin-bottom:6mm;"><p style="font-size:13pt;">Lena schreibt seit zwei Wochen jeden Tag mit Tom. Auf einmal kommt keine Antwort mehr. Seine Nachricht „zuletzt online vor 5 Minuten“ steht da. Lena starrt auf ihr Handy.</p></div>
+<div class="grid2" style="margin-bottom:6mm;">
+<div class="karte" style="background:#FBE0DA;"><h3>Möglichkeit A</h3><p>Lena schreibt: „Ich merke, du antwortest nicht. Ist alles okay?“</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
+<div class="karte" style="background:#D5EFEC;"><h3>Möglichkeit B</h3><p>Lena schweigt auch und wartet ab, ob er sich meldet.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
+</div>
+<div class="auftrag"><b>Entscheidungsfrage:</b> Wer ist hier eigentlich fair, und was hätte Tom tun können?<br><br><b>Aufgabe:</b> Entscheidet euch als Gruppe für A oder B. „Kommt drauf an“ gilt nicht. Schreibt auf, welche Eigenschaft in diesem Fall am meisten gefehlt hat.</div>
+<p class="klein">Unsere Eigenschaft, die gefehlt hat: ___________________________</p></div><div class="sheet"><div class="kopf"><div><small>Fall 3 von 4 · Dilemma</small><h1>Samstag war immer unser Tag</h1></div><div class="name">Name:<span></span></div></div>
+<div class="karte" style="font-size:13pt;padding:6mm;margin-bottom:6mm;"><p style="font-size:13pt;">Nina trifft sich seit Jahren jeden Samstag mit ihrer besten Freundin Hanna. Seit Nina einen Freund hat, sagt sie meistens ab. Hanna sagt nichts, aber sie ist verletzt. Nina merkt es.</p></div>
+<div class="grid2" style="margin-bottom:6mm;">
+<div class="karte" style="background:#FBE0DA;"><h3>Möglichkeit A</h3><p>Nina bleibt bei ihrem Freund, die Freundschaft muss das aushalten.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
+<div class="karte" style="background:#D5EFEC;"><h3>Möglichkeit B</h3><p>Nina nimmt den Samstag wieder fest für Hanna und sagt es ihrem Freund.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
+</div>
+<div class="auftrag"><b>Entscheidungsfrage:</b> Wie viel Zeit darf eine Beziehung kosten, und was schuldet man Freunden?<br><br><b>Aufgabe:</b> Entscheidet euch als Gruppe für A oder B. „Kommt drauf an“ gilt nicht. Schreibt auf, welche Eigenschaft in diesem Fall am meisten gefehlt hat.</div>
+<p class="klein">Unsere Eigenschaft, die gefehlt hat: ___________________________</p></div><div class="sheet"><div class="kopf"><div><small>Fall 4 von 4 · Dilemma</small><h1>„Ich hab nur Angst, dich zu verlieren“</h1></div><div class="name">Name:<span></span></div></div>
+<div class="karte" style="font-size:13pt;padding:6mm;margin-bottom:6mm;"><p style="font-size:13pt;">Emre schreibt viel mit einer Klassenkameradin, die einfach eine gute Freundin ist. Seine Freundin Chiara findet das schlimm. Sie sagt: „Ich hab nur Angst, dich zu verlieren.“ Sie will, dass er den Chat beendet.</p></div>
+<div class="grid2" style="margin-bottom:6mm;">
+<div class="karte" style="background:#FBE0DA;"><h3>Möglichkeit A</h3><p>Emre beendet den Chat, damit Chiara sich sicher fühlt.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
+<div class="karte" style="background:#D5EFEC;"><h3>Möglichkeit B</h3><p>Emre schreibt weiter, redet aber offen mit Chiara über ihre Angst.</p><p class="klein">Dafür spricht:</p><div class="linien"></div><div class="linien"></div><p class="klein">Dagegen spricht:</p><div class="linien"></div><div class="linien"></div></div>
+</div>
+<div class="auftrag"><b>Entscheidungsfrage:</b> Ist das noch Liebe, normale Unsicherheit oder schon zu viel Kontrolle?<br><br><b>Aufgabe:</b> Entscheidet euch als Gruppe für A oder B. „Kommt drauf an“ gilt nicht. Schreibt auf, welche Eigenschaft in diesem Fall am meisten gefehlt hat.</div>
+<p class="klein">Unsere Eigenschaft, die gefehlt hat: ___________________________</p></div>
+</body></html>
